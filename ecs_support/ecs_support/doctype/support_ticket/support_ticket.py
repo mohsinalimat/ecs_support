@@ -18,7 +18,9 @@ class SupportTicket(Document):
 
 	@frappe.whitelist()
 	def on_update(self):
-		self.update_issue()
+		user = frappe.session.user
+		if user != "support@erpcloud.systems":
+			self.update_issue()
 
 
 	@frappe.whitelist()
@@ -85,19 +87,3 @@ class SupportTicket(Document):
 		response = requests.put(url, json=data, headers=headers)
 		returned_data = json.loads(response.text)
 		frappe.msgprint(returned_data['message'])
-
-	@frappe.whitelist()
-	def support_update(**kwargs):
-		ticket = frappe.get_doc('Support Ticket', kwargs['ticket_no'])
-		ticket.subject = kwargs["subject"]
-		ticket.status = kwargs["status"]
-		ticket.issue_type = kwargs["issue_type"]
-		ticket.description = kwargs["description"]
-		ticket.resolution_details = kwargs["resolution_details"]
-		ticket.save()
-		ticket_name = ticket.name
-
-		if ticket_name:
-			return "Issue Updated Successfully"
-		else:
-			return "Issue Not Updated"

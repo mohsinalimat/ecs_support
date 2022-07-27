@@ -141,7 +141,7 @@
    "no_copy": 1,
    "oldfieldname": "status",
    "oldfieldtype": "Select",
-   "options": "Open\nReplied\nOn Hold\nResolved\nClosed",
+   "options": "Open\nWorking\nReplied\nHold\nResolved\nClosed",
    "search_index": 1
   },
   {
@@ -203,7 +203,7 @@
  ],
  "icon": "fa fa-ticket",
  "links": [],
- "modified": "2022-07-27 15:21:14.587569",
+ "modified": "2022-07-27 18:25:33.964166",
  "modified_by": "Administrator",
  "module": "ECS Support",
  "name": "Support Ticket",
