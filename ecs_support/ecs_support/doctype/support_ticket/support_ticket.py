@@ -49,6 +49,7 @@ class SupportTicket(Document):
 		data["priority"] = self.priority
 		data["issue_type"] = self.issue_type
 		data["description"] = self.description
+		data["support_rating"] = self.support_rating
 
 		url = 'https://cloud.erpnext.cloud/api/method/ecs_ecs.functions.issue_add'
 		headers = {'content-type': 'application/json; charset=utf-8', 'Accept': 'application/json',
@@ -79,7 +80,8 @@ class SupportTicket(Document):
 				"status": self.status,
 				"priority": self.priority,
 				"issue_type": self.issue_type,
-				"description": self.description
+				"description": self.description,
+				"support_rating": self.support_rating
 			}
 			child_files = frappe.db.get_list('File', {'attached_to_name': self.name}, ['file_name', 'file_url'])
 			data['attachments_table'] = child_files

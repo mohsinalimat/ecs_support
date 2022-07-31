@@ -29,7 +29,9 @@
   "sb_details",
   "description",
   "column_break_20",
-  "resolution_details"
+  "support_reply",
+  "resolution_details",
+  "support_rating"
  ],
  "fields": [
   {
@@ -198,11 +200,22 @@
   {
    "fieldname": "column_break_20",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "support_reply",
+   "fieldtype": "Small Text",
+   "label": "Support Reply",
+   "read_only": 1
+  },
+  {
+   "fieldname": "support_rating",
+   "fieldtype": "Rating",
+   "label": "Support Rating"
   }
  ],
  "icon": "fa fa-ticket",
  "links": [],
- "modified": "2022-07-31 14:54:49.753310",
+ "modified": "2022-07-31 17:38:41.369956",
  "modified_by": "Administrator",
  "module": "ECS Support",
  "name": "Support Ticket",

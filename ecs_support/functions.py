@@ -17,6 +17,7 @@ def support_update(**kwargs):
 		ticket.issue_type = kwargs["issue_type"]
 		ticket.description = kwargs["description"]
 		ticket.resolution_details = kwargs["resolution_details"]
+		ticket.support_reply = kwargs["support_reply"]
 		ticket.save()
 		ticket_name = ticket.name
 
