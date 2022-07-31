@@ -3,7 +3,7 @@
  "allow_import": 1,
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2022-07-25 11:16:50.713278",
+ "creation": "2022-07-30 17:23:14.573254",
  "doctype": "DocType",
  "document_type": "Setup",
  "email_append_to": 1,
@@ -28,13 +28,14 @@
   "issue_type",
   "sb_details",
   "description",
-  "section_break_19",
+  "column_break_20",
   "resolution_details"
  ],
  "fields": [
   {
    "fieldname": "section_break_1",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "User Info"
   },
   {
    "bold": 1,
@@ -87,7 +88,8 @@
   },
   {
    "fieldname": "subject_section",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Ticket Info"
   },
   {
    "fieldname": "naming_series",
@@ -154,6 +156,7 @@
    "reqd": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "issue_type",
    "fieldtype": "Select",
    "label": "Issue Type",
@@ -161,11 +164,9 @@
    "reqd": 1
   },
   {
-   "collapsible": 1,
-   "collapsible_depends_on": "eval:doc.status!=\"Closed\"",
    "fieldname": "sb_details",
    "fieldtype": "Section Break",
-   "label": "Details"
+   "label": "Ticket Details"
   },
   {
    "bold": 1,
@@ -176,12 +177,6 @@
    "oldfieldname": "problem_description",
    "oldfieldtype": "Text",
    "reqd": 1
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "section_break_19",
-   "fieldtype": "Section Break",
-   "label": "Resolution Details"
   },
   {
    "depends_on": "eval:!doc.__islocal",
@@ -199,11 +194,15 @@
    "label": "Issue No",
    "no_copy": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
   }
  ],
  "icon": "fa fa-ticket",
  "links": [],
- "modified": "2022-07-27 18:25:33.964166",
+ "modified": "2022-07-31 14:54:49.753310",
  "modified_by": "Administrator",
  "module": "ECS Support",
  "name": "Support Ticket",
@@ -228,6 +227,5 @@
  "subject_field": "subject",
  "title_field": "subject",
  "track_changes": 1,
- "track_seen": 1,
- "track_views": 1
+ "track_seen": 1
 }

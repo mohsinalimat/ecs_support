@@ -10,15 +10,17 @@ import urllib.request
 
 @frappe.whitelist()
 def support_update(**kwargs):
-	ticket = frappe.get_doc('Support Ticket', kwargs['ticket_no'])
-	ticket.status = kwargs["status"]
-	ticket.issue_type = kwargs["issue_type"]
-	ticket.description = kwargs["description"]
-	ticket.resolution_details = kwargs["resolution_details"]
-	ticket.save()
-	ticket_name = ticket.name
+	user = frappe.session.user
+	if user == "support@erpcloud.systems":
+		ticket = frappe.get_doc('Support Ticket', kwargs['ticket_no'])
+		ticket.status = kwargs["status"]
+		ticket.issue_type = kwargs["issue_type"]
+		ticket.description = kwargs["description"]
+		ticket.resolution_details = kwargs["resolution_details"]
+		ticket.save()
+		ticket_name = ticket.name
 
-	if ticket_name:
-		return "Issue Updated Successfully"
-	else:
-		return "Issue Not Updated"
+		if ticket_name:
+			return "Issue Updated Successfully"
+		else:
+			return "Issue Not Updated"
