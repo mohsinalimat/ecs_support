@@ -9,6 +9,12 @@ app_color = "grey"
 app_email = "info@erpcloud.systems"
 app_license = "MIT"
 
+doc_events = {
+	"File": {
+		"after_insert": "ecs_support.functions.add_attachment",
+	}
+}
+
 # Includes in <head>
 # ------------------
 

@@ -7,8 +7,10 @@
  "engine": "InnoDB",
  "field_order": [
   "project_name",
+  "system_url",
   "column_break_2",
-  "system_url"
+  "ticket_api_key",
+  "ticket_api_secret"
  ],
  "fields": [
   {
@@ -28,12 +30,24 @@
    "in_list_view": 1,
    "label": "System URL",
    "reqd": 1
+  },
+  {
+   "fieldname": "ticket_api_key",
+   "fieldtype": "Data",
+   "label": "Ticket API Key",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ticket_api_secret",
+   "fieldtype": "Data",
+   "label": "Ticket API Secret",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2022-07-26 15:58:28.996119",
+ "modified": "2022-08-07 17:32:05.822334",
  "modified_by": "Administrator",
  "module": "ECS Support",
  "name": "Support Ticket Settings",

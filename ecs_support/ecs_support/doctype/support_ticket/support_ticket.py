@@ -32,6 +32,10 @@ class SupportTicket(Document):
 
 	@frappe.whitelist()
 	def create_issue(self):
+		api_key = frappe.db.get_single_value("Support Ticket Settings", "ticket_api_key")
+		api_secret = frappe.db.get_single_value("Support Ticket Settings", "ticket_api_secret")
+		token = api_key + ":" + api_secret
+		authorization = 'token ' + token
 		data = {}
 		data["doctype"] = "Issue"
 		data["ticket_no"] = self.name
@@ -53,7 +57,7 @@ class SupportTicket(Document):
 
 		url = 'https://cloud.erpnext.cloud/api/method/ecs_ecs.functions.issue_add'
 		headers = {'content-type': 'application/json; charset=utf-8', 'Accept': 'application/json',
-				   'Authorization': 'token 6b0b5953db089f9:46a71a7a10004ae'}
+				   'Authorization': authorization}
 		response = requests.post(url, json=data, headers=headers)
 		returned_data = json.loads(response.text)
 		self.issue_no = returned_data['message']
@@ -61,6 +65,10 @@ class SupportTicket(Document):
 
 	@frappe.whitelist()
 	def update_issue(self):
+		api_key = frappe.db.get_single_value("Support Ticket Settings", "ticket_api_key")
+		api_secret = frappe.db.get_single_value("Support Ticket Settings", "ticket_api_secret")
+		token = api_key + ":" + api_secret
+		authorization = 'token ' + token
 		user = frappe.session.user
 		if user != "support@erpcloud.systems":
 			data = {
@@ -83,16 +91,13 @@ class SupportTicket(Document):
 				"description": self.description,
 				"support_rating": self.support_rating
 			}
-			child_files = frappe.db.get_list('File', {'attached_to_name': self.name}, ['file_name', 'file_url'])
-			data['attachments_table'] = child_files
 
 			#frappe.msgprint(json.dumps(data))
 			url = 'https://cloud.erpnext.cloud/api/method/ecs_ecs.functions.issue_update'
 			headers = {'content-type': 'application/json; charset=utf-8', 'Accept': 'application/json',
-					   'Authorization': 'token 6b0b5953db089f9:46a71a7a10004ae'}
+					   'Authorization': authorization}
 			response = requests.put(url, json=data, headers=headers)
 			returned_data = json.loads(response.text)
 			#frappe.msgprint(returned_data['message'])
 			#frappe.msgprint(returned_data)
-
 

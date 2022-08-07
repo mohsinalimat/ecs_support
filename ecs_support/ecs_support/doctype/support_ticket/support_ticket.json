@@ -208,6 +208,7 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.status == \"Closed\"",
    "fieldname": "support_rating",
    "fieldtype": "Rating",
    "label": "Support Rating"
@@ -215,7 +216,7 @@
  ],
  "icon": "fa fa-ticket",
  "links": [],
- "modified": "2022-07-31 17:38:41.369956",
+ "modified": "2022-08-01 12:37:05.673790",
  "modified_by": "Administrator",
  "module": "ECS Support",
  "name": "Support Ticket",
