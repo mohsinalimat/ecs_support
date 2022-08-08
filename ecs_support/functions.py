@@ -28,6 +28,11 @@ def support_update(**kwargs):
 
 @frappe.whitelist()
 def add_attachment(doc, method=None):
+	remote_system_url = frappe.db.get_single_value("Support Ticket Settings", "remote_system_url")
+	api_key = frappe.db.get_single_value("Support Ticket Settings", "ticket_api_key")
+	api_secret = frappe.db.get_single_value("Support Ticket Settings", "ticket_api_secret")
+	token = api_key + ":" + api_secret
+	authorization = 'token ' + token
 	user = frappe.session.user
 	if user != "support@erpcloud.systems" and doc.attached_to_doctype == "Support Ticket":
 		ticket = frappe.get_doc("Support Ticket", doc.attached_to_name)
@@ -40,9 +45,9 @@ def add_attachment(doc, method=None):
 		}
 
 		# frappe.msgprint(json.dumps(data))
-		url = 'https://cloud.erpnext.cloud/api/method/ecs_ecs.functions.update_attachment'
+		url = remote_system_url + '/api/method/ecs_ecs.functions.update_attachment'
 		headers = {'content-type': 'application/json; charset=utf-8', 'Accept': 'application/json',
-				   'Authorization': 'token 6b0b5953db089f9:46a71a7a10004ae'}
+				   'Authorization': authorization}
 		response = requests.put(url, json=data, headers=headers)
 		returned_data = json.loads(response.text)
 # frappe.msgprint(returned_data['message'])

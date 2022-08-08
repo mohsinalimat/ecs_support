@@ -32,6 +32,7 @@ class SupportTicket(Document):
 
 	@frappe.whitelist()
 	def create_issue(self):
+		remote_system_url = frappe.db.get_single_value("Support Ticket Settings", "remote_system_url")
 		api_key = frappe.db.get_single_value("Support Ticket Settings", "ticket_api_key")
 		api_secret = frappe.db.get_single_value("Support Ticket Settings", "ticket_api_secret")
 		token = api_key + ":" + api_secret
@@ -55,7 +56,7 @@ class SupportTicket(Document):
 		data["description"] = self.description
 		data["support_rating"] = self.support_rating
 
-		url = 'https://cloud.erpnext.cloud/api/method/ecs_ecs.functions.issue_add'
+		url = remote_system_url + '/api/method/ecs_ecs.functions.issue_add'
 		headers = {'content-type': 'application/json; charset=utf-8', 'Accept': 'application/json',
 				   'Authorization': authorization}
 		response = requests.post(url, json=data, headers=headers)
@@ -65,6 +66,7 @@ class SupportTicket(Document):
 
 	@frappe.whitelist()
 	def update_issue(self):
+		remote_system_url = frappe.db.get_single_value("Support Ticket Settings", "remote_system_url")
 		api_key = frappe.db.get_single_value("Support Ticket Settings", "ticket_api_key")
 		api_secret = frappe.db.get_single_value("Support Ticket Settings", "ticket_api_secret")
 		token = api_key + ":" + api_secret
@@ -93,7 +95,7 @@ class SupportTicket(Document):
 			}
 
 			#frappe.msgprint(json.dumps(data))
-			url = 'https://cloud.erpnext.cloud/api/method/ecs_ecs.functions.issue_update'
+			url = remote_system_url + '/api/method/ecs_ecs.functions.issue_update'
 			headers = {'content-type': 'application/json; charset=utf-8', 'Accept': 'application/json',
 					   'Authorization': authorization}
 			response = requests.put(url, json=data, headers=headers)
