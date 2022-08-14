@@ -1,0 +1,55 @@
+{
+ "cards": [
+  {
+   "card": "Total No Of Tickets"
+  },
+  {
+   "card": "Open Tickets"
+  },
+  {
+   "card": "Working Tickets"
+  },
+  {
+   "card": "Hold Tickets"
+  },
+  {
+   "card": "Replied Tickets"
+  },
+  {
+   "card": "Resolved Tickets"
+  },
+  {
+   "card": "Closed Tickets"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Tickets Status",
+   "width": "Half"
+  },
+  {
+   "chart": "Tickets Type",
+   "width": "Half"
+  },
+  {
+   "chart": "Tickets Priority",
+   "width": "Half"
+  },
+  {
+   "chart": "Tickets Raised By",
+   "width": "Half"
+  }
+ ],
+ "creation": "2022-08-14 11:04:00.711169",
+ "dashboard_name": "Support Tickets",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2022-08-14 11:26:44.234337",
+ "modified_by": "Administrator",
+ "module": "ECS Support",
+ "name": "Support Tickets",
+ "owner": "Administrator"
+}

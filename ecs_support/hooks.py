@@ -20,11 +20,11 @@ doc_events = {
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/ecs_support/css/ecs_support.css"
-# app_include_js = "/assets/ecs_support/js/ecs_support.js"
+app_include_js = "/assets/ecs_support/js/support.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/ecs_support/css/ecs_support.css"
-# web_include_js = "/assets/ecs_support/js/ecs_support.js"
+# web_include_js = "/assets/ecs_support/js/support.js"
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "ecs_support/public/scss/website"
