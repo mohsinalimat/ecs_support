@@ -13,6 +13,13 @@ class SupportTicket(Document):
 		self.fetch_employee_contacts()
 
 	@frappe.whitelist()
+	def validate(self):
+		high_priority = frappe.db.sql(""" select name as name, count(name) as count from `tabSupport Ticket` where priority = "High" and status != "Closed" """, as_dict=1)
+		for x in high_priority:
+			if self.priority == "High" and x.count > 0 and self.name != x.name:
+				frappe.throw("You Already Have A High Priority Ticket #" + x.name)
+
+	@frappe.whitelist()
 	def after_insert(self):
 		self.create_issue()
 
