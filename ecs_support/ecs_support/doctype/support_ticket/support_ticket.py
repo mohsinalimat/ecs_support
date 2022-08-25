@@ -29,13 +29,14 @@ class SupportTicket(Document):
 
 	@frappe.whitelist()
 	def fetch_employee_contacts(self):
-		user = frappe.session.user
+		user = self.raised_by
 		support_user = frappe.db.get_value("Support User", {'user': user}, "name")
-		if not support_user and user != "support@erpcloud.systems":
-			frappe.throw("Please Create <a href=/app/support-user>Support User</a> With Your AnyDesk ID, Mobile No & Email Address, So That We Can Contact You After Resolving Your Ticket.")
 		self.anydesk_id = frappe.db.get_value("Support User", support_user, "anydesk_id")
 		self.mobile_no = frappe.db.get_value("Support User", support_user, "mobile_no")
 		self.email = frappe.db.get_value("Support User", support_user, "email")
+		if not support_user and user != "support@erpcloud.systems":
+			frappe.throw("Please Create <a href=/app/support-user>Support User</a> With Your AnyDesk ID, Mobile No & Email Address, So That We Can Contact You After Resolving Your Ticket.")
+
 
 	@frappe.whitelist()
 	def create_issue(self):
