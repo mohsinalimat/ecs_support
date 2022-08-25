@@ -236,7 +236,7 @@
  ],
  "icon": "fa fa-ticket",
  "links": [],
- "modified": "2022-08-25 11:10:33.639886",
+ "modified": "2022-08-25 12:22:17.171778",
  "modified_by": "Administrator",
  "module": "ECS Support",
  "name": "Support Ticket",
@@ -246,10 +246,14 @@
    "create": 1,
    "delete": 1,
    "email": 1,
+   "export": 1,
+   "import": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "Support Team",
+   "select": 1,
+   "set_user_permissions": 1,
    "share": 1,
    "write": 1
   }

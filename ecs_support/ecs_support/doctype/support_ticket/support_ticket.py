@@ -31,7 +31,7 @@ class SupportTicket(Document):
 	def fetch_employee_contacts(self):
 		user = frappe.session.user
 		support_user = frappe.db.get_value("Support User", {'user': user}, "name")
-		if not support_user:
+		if not support_user and user != "support@erpcloud.systems":
 			frappe.throw("Please Create <a href=/app/support-user>Support User</a> With Your AnyDesk ID, Mobile No & Email Address, So That We Can Contact You After Resolving Your Ticket.")
 		self.anydesk_id = frappe.db.get_value("Support User", support_user, "anydesk_id")
 		self.mobile_no = frappe.db.get_value("Support User", support_user, "mobile_no")
