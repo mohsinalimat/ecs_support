@@ -30,7 +30,7 @@ class SupportTicket(Document):
 	@frappe.whitelist()
 	def fetch_employee_contacts(self):
 		user = frappe.session.user
-		support_user = frappe.db.get_value("Support User", user, "name")
+		support_user = frappe.db.get_value("Support User", {'user': user}, "name")
 		if not support_user:
 			frappe.throw("Please Create <a href=/app/support-user>Support User</a> With Your AnyDesk ID, Mobile No & Email Address, So That We Can Contact You After Resolving Your Ticket.")
 		self.anydesk_id = frappe.db.get_value("Support User", user, "anydesk_id")
