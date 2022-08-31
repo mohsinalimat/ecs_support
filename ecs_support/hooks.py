@@ -12,6 +12,9 @@ app_license = "MIT"
 doc_events = {
 	"File": {
 		"after_insert": "ecs_support.functions.add_attachment",
+	},
+	"Comment": {
+		"after_insert": "ecs_support.functions.add_comment",
 	}
 }
 
